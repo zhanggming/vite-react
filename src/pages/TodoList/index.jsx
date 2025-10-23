@@ -76,6 +76,37 @@ const App = () => {
   const handleCancel = () => {
     setOpen(false);
   };
+  const handleEdit = (record) => {
+    console.log(record);
+  };
+  const handleDelet = (record) => {
+    console.log(record);
+  };
+
+  const columns = [
+    {
+      title: "名称",
+      dataIndex: "title",
+    },
+    {
+      title: "描述",
+      dataIndex: "description",
+    },
+    {
+      title: "状态",
+      dataIndex: "completed",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (_, record) => (
+        <Space size="middle">
+          <a onClick={() => handleEdit(record)}>修改</a>
+          <a onClick={() => handleDelet(record)}>删除</a>
+        </Space>
+      ),
+    },
+  ];
 
   return (
     <div className="container">
@@ -114,11 +145,7 @@ const App = () => {
           </Button>
         </Col>
         <Col span={24} className="table-page">
-          <Table dataSource={data} rowKey="id">
-            <Column title="名称" dataIndex="title" key="title" />
-            <Column title="描述" dataIndex="description" key="description" />
-            <Column title="状态" dataIndex="completed" key="completed" />
-          </Table>
+          <Table dataSource={data} rowKey="id" columns={columns}></Table>
         </Col>
       </Row>
       <Modal title="新增" open={open} footer={null} destroyOnHidden>
