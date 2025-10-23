@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Space,
   Table,
@@ -12,7 +12,12 @@ import {
   Modal,
 } from "antd";
 import "./index.css";
-import { getTodoList, addTodoList } from "@/api/todo.js";
+import {
+  getTodoList,
+  addTodoList,
+  editTodoList,
+  deleteTodoList,
+} from "@/api/todo.js";
 import AddApp from "./AddFrom";
 const { Column } = Table;
 const options = [
@@ -29,12 +34,15 @@ const options = [
 const App = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState([]);
+  const [initialValues, setInitialValues] = useState({});
   const [searchForm, setSearchForm] = useState({
     title: "",
     description: "",
     completed: undefined,
   });
   const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState("新增事项");
+  const [action, setAction] = useState("add");
 
   useEffect(() => {
     getList();
@@ -59,27 +67,42 @@ const App = () => {
   };
 
   const handleOpen = () => {
+    setTitle("新增事项");
     setOpen(true);
+    setAction("add");
+    setInitialValues({})
   };
 
   const handleOk = (values) => {
     console.log(values, "values");
-    addTodoList({
-      ...values,
-      completed: 0,
-    }).then((res) => {
-      console.log(res, "res");
-      setOpen(false);
-      getList();
-    });
+    if (action === "add") {
+      addTodoList({
+        ...values,
+        completed: 0,
+      }).then((res) => {
+        console.log(res, "add res");
+        setOpen(false);
+        getList();
+      });
+    }
+    if (action === "edit") {
+      editTodoList(values).then((res) => {
+        console.log(res, "edit res");
+        setOpen(false);
+        getList();
+      });
+    }
   };
   const handleCancel = () => {
     setOpen(false);
   };
   const handleEdit = (record) => {
-    console.log(record);
+    setTitle("编辑事项");
+    setInitialValues({ ...record });
+    setOpen(true);
+    setAction("edit");
   };
-  const handleDelet = (record) => {
+  const handleDelete = (record) => {
     console.log(record);
   };
 
@@ -102,7 +125,7 @@ const App = () => {
       render: (_, record) => (
         <Space size="middle">
           <a onClick={() => handleEdit(record)}>修改</a>
-          <a onClick={() => handleDelet(record)}>删除</a>
+          <a onClick={() => handleDelete(record)}>删除</a>
         </Space>
       ),
     },
@@ -148,8 +171,12 @@ const App = () => {
           <Table dataSource={data} rowKey="id" columns={columns}></Table>
         </Col>
       </Row>
-      <Modal title="新增" open={open} footer={null} destroyOnHidden>
-        <AddApp onOk={handleOk} onCancel={handleCancel} />
+      <Modal title={title} open={open} footer={null} destroyOnHidden>
+        <AddApp
+          onOk={handleOk}
+          onCancel={handleCancel}
+          initialValues={initialValues}
+        />
       </Modal>
     </div>
   );

@@ -14,4 +14,20 @@ export const addTodoList = (data)=>{
         data:data,
     })
 }
-export default {getTodoList,addTodoList}
+//edit
+export const editTodoList = (data)=>{
+    return request({
+        url:'/todo/update',
+        method:'put',
+        data:data,
+    })
+}
+//delete
+export const deleteTodoList = (queryParams)=>{
+    return request({
+        url:'/todo/delete',
+        method:'delete',
+        params:queryParams,
+    })
+}
+export default {getTodoList,addTodoList,editTodoList,deleteTodoList}
