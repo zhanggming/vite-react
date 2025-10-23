@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Space, Table, Tag, Form, Select, Input, Button, Row, Col,Modal  } from "antd";
+import {
+  Space,
+  Table,
+  Tag,
+  Form,
+  Select,
+  Input,
+  Button,
+  Row,
+  Col,
+  Modal,
+} from "antd";
 import "./index.css";
-import { getTodoList } from "@/api/todo.js";
-import AddApp from './AddFrom';
+import { getTodoList, addTodoList } from "@/api/todo.js";
+import AddApp from "./AddFrom";
 const { Column } = Table;
-
 const options = [
   {
     value: 1,
@@ -24,7 +34,7 @@ const App = () => {
     description: "",
     completed: undefined,
   });
-  const [open,setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     getList();
@@ -32,9 +42,8 @@ const App = () => {
 
   const getList = () => {
     getTodoList().then((res) => {
-      console.log(res, "///");
+      setData(res);
     });
-    setData([]);
   };
 
   const onReset = () => {
@@ -49,13 +58,20 @@ const App = () => {
     });
   };
 
-  const handleOpen = ()=>{
-     setOpen(true)
-  }
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   const handleOk = (values) => {
-    console.log(values,'values')
-    setOpen(false);
+    console.log(values, "values");
+    addTodoList({
+      ...values,
+      completed: 0,
+    }).then((res) => {
+      console.log(res, "res");
+      setOpen(false);
+      getList();
+    });
   };
   const handleCancel = () => {
     setOpen(false);
@@ -93,25 +109,20 @@ const App = () => {
       </Form>
       <Row className="table-box">
         <Col span={24} className="button-list">
-          <Button type="primary" onClick={handleOpen}>新建</Button>
+          <Button type="primary" onClick={handleOpen}>
+            新建
+          </Button>
         </Col>
         <Col span={24} className="table-page">
-          <Table dataSource={data}>
+          <Table dataSource={data} rowKey="id">
             <Column title="名称" dataIndex="title" key="title" />
             <Column title="描述" dataIndex="description" key="description" />
             <Column title="状态" dataIndex="completed" key="completed" />
           </Table>
         </Col>
       </Row>
-      <Modal
-        title="新增"
-        open={open}
-        footer={null}
-        destroyOnHidden
-      >
-        <AddApp         
-        onOk={handleOk}
-        onCancel={handleCancel}/>
+      <Modal title="新增" open={open} footer={null} destroyOnHidden>
+        <AddApp onOk={handleOk} onCancel={handleCancel} />
       </Modal>
     </div>
   );
