@@ -1,33 +1,34 @@
 import request from "@/utils/request";
 //list
-export const getTodoList = ()=>{
+export const getTodoList = (queryParams) => {
     return request({
-        url:'/todo/list',
-        method:'get',
+        url: '/todo/list',
+        method: 'get',
+        params: queryParams,
     })
 }
 //add
-export const addTodoList = (data)=>{
+export const addTodoList = (data) => {
     return request({
-        url:'/todo/add',
-        method:'post',
-        data:data,
+        url: '/todo/add',
+        method: 'post',
+        data: data,
     })
 }
 //edit
-export const editTodoList = (data)=>{
+export const editTodoList = (data) => {
     return request({
-        url:'/todo/update',
-        method:'put',
-        data:data,
+        url: '/todo/update',
+        method: 'put',
+        data: data,
     })
 }
 //delete
-export const deleteTodoList = (queryParams)=>{
+export const deleteTodoList = (queryParams) => {
     return request({
-        url:'/todo/delete',
-        method:'delete',
-        params:queryParams,
+        url: '/todo/delete',
+        method: 'delete',
+        params: queryParams,
     })
 }
-export default {getTodoList,addTodoList,editTodoList,deleteTodoList}
+export default { getTodoList, addTodoList, editTodoList, deleteTodoList }

@@ -10,6 +10,8 @@ import {
   Row,
   Col,
   Modal,
+  message,
+  Popconfirm,
 } from "antd";
 import "./index.css";
 import {
@@ -32,25 +34,32 @@ const options = [
 ];
 
 const App = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm();
   const [data, setData] = useState([]);
   const [initialValues, setInitialValues] = useState({});
   const [searchForm, setSearchForm] = useState({
-    title: "",
-    description: "",
+    title: undefined,
+    description: undefined,
     completed: undefined,
+    page: 1,
+    pageSize: 10,
   });
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("新增事项");
   const [action, setAction] = useState("add");
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     getList();
-  }, []);
+  }, [searchForm]);
 
   const getList = () => {
-    getTodoList().then((res) => {
-      setData(res);
+    console.log(searchForm,'getList')
+    getTodoList(searchForm).then((res) => {
+      const { data = [] } = res;
+      setData(data);
+      setTotal(res.total || 0);
     });
   };
 
@@ -70,7 +79,7 @@ const App = () => {
     setTitle("新增事项");
     setOpen(true);
     setAction("add");
-    setInitialValues({})
+    setInitialValues({});
   };
 
   const handleOk = (values) => {
@@ -102,9 +111,6 @@ const App = () => {
     setOpen(true);
     setAction("edit");
   };
-  const handleDelete = (record) => {
-    console.log(record);
-  };
 
   const columns = [
     {
@@ -118,21 +124,64 @@ const App = () => {
     {
       title: "状态",
       dataIndex: "completed",
+      render: (_) => {
+        const obj = options.find((item) => item.value === _);
+        return obj.label;
+      },
     },
     {
-      title: "Action",
+      title: "操作",
       key: "action",
+      align: "center",
       render: (_, record) => (
         <Space size="middle">
           <a onClick={() => handleEdit(record)}>修改</a>
-          <a onClick={() => handleDelete(record)}>删除</a>
+          <Popconfirm
+            title="确认删除"
+            description="是否确认删除?"
+            onConfirm={(e) => confirm(e, record.id)}
+            onCancel={cancel}
+            okText="确定"
+            cancelText="取消"
+          >
+            <a>删除</a>
+          </Popconfirm>
         </Space>
       ),
     },
   ];
 
+  //delete
+  const confirm = (e, id) => {
+    console.log(e);
+    deleteTodoList({ id }).then((res) => {
+      console.log(res, "delete res");
+      messageApi.success("删除成功！");
+      getList();
+    });
+  };
+  const cancel = (e) => {
+    console.log(e);
+    // messageApi.error("Click on No");
+  };
+  //page
+  const onPageChange = (page) => {
+    console.log(page);
+    setSearchForm(() => {
+      return { ...searchForm, page };
+    });
+    getList();
+  };
+  const showTotal = (total) => `共计 ${total} 条`;
+  const pagination = {
+    total,
+    showTotal,
+    onChange: onPageChange,
+    current: searchForm.page,
+  };
   return (
     <div className="container">
+      {contextHolder}
       <Form name="searchForm" form={form} onFinish={onFinish}>
         <Row>
           <Col span={10}>
@@ -168,7 +217,12 @@ const App = () => {
           </Button>
         </Col>
         <Col span={24} className="table-page">
-          <Table dataSource={data} rowKey="id" columns={columns}></Table>
+          <Table
+            pagination={pagination}
+            dataSource={data}
+            rowKey="id"
+            columns={columns}
+          ></Table>
         </Col>
       </Row>
       <Modal title={title} open={open} footer={null} destroyOnHidden>
