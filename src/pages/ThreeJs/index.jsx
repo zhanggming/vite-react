@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
+import "./index.less";
+
 export const ThreeJsApp = () => {
   const threeRef = useRef(null);
   useEffect(() => {
@@ -27,10 +29,10 @@ export const ThreeJsApp = () => {
       /*********************创建场景********************************/
       const scene = new THREE.Scene();
       //添加光照
-      const color = 0xFFFFFF;
+      const color = 0xffffff;
       const intensity = 3;
-      const light =  new THREE.DirectionalLight(color,intensity);
-      light.position.set(-1,2,4)
+      const light = new THREE.DirectionalLight(color, intensity);
+      light.position.set(-1, 2, 4);
       scene.add(light);
       //几何体
       const boxWidth = 1;
@@ -42,45 +44,66 @@ export const ThreeJsApp = () => {
       //网格对象，包含集合体、材质
       //多个
       const cubes = [
-        makeInstance(geometry, 0x44aa88,  0,scene),
-        makeInstance(geometry, 0x8844aa, -2,scene),
-        makeInstance(geometry, 0xaa8844,  2,scene),
-      ]
+        makeInstance(geometry, 0x44aa88, 0, scene),
+        makeInstance(geometry, 0x8844aa, -2, scene),
+        makeInstance(geometry, 0xaa8844, 2, scene),
+      ];
       //单个
       // const cube = new THREE.Mesh(geometry, material);
       // scene.add(cube);
       /*********************场景和摄像机添加到渲染器********************************/
       //添加动画
-      function renderFrame(time){
+      function renderFrame(time) {
         time *= 0.001;
+        if (resizeRendererToDisplaySize(renderer)) {
+          const canvas = renderer.domElement;
+          camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        }
+        camera.updateProjectionMatrix();
         //多个
-        cubes.forEach((cube,ndx)=>{
-          const speed = 1 + ndx * .1;
+        cubes.forEach((cube, ndx) => {
+          const speed = 1 + ndx * 0.1;
           const rot = time * speed;
           cube.rotation.x = rot;
           cube.rotation.y = rot;
-        })
+        });
         //单个
         // cube.rotation.x = time;
         // cube.rotation.y = time;
         renderer.render(scene, camera);
-        requestAnimationFrame(renderFrame)
+        requestAnimationFrame(renderFrame);
       }
-      requestAnimationFrame(renderFrame)
+      requestAnimationFrame(renderFrame);
     }
   };
 
-  const makeInstance = (geometry,color,x,scene)=>{
-     const material = new THREE.MeshPhongMaterial({color});
-     const cube = new  THREE.Mesh(geometry,material);
-     scene.add(cube);
-     cube.position.x = x;
-     return cube;
-  }
+  //创建多个网格
+  const makeInstance = (geometry, color, x, scene) => {
+    const material = new THREE.MeshPhongMaterial({ color });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+    cube.position.x = x;
+    return cube;
+  };
+  
+  //判断是否需要调整大小-绘图缓冲区
+  const resizeRendererToDisplaySize = (renderer) => {
+    const canvas = renderer.domElement;
+    const pixeRatio = window.devicePixelRatio;
+    // const width = canvas.clientWidth;
+    // const height = canvas.clientHeight;
+    const width = Math.floor(canvas.clientWidth * pixeRatio);
+    const height = Math.floor(canvas.clientHeight * pixeRatio);
+    const needResize = canvas.width !== width || canvas.height !== height;
+    if (needResize) {
+      renderer.setSize(width, height, false);
+    }
+    return needResize;
+  };
 
   return (
     <div className="container">
-      <canvas ref={threeRef} width={1920} height={1080}></canvas>
+      <canvas ref={threeRef} id="c"></canvas>
     </div>
   );
 };
