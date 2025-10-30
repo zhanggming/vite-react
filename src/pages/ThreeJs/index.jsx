@@ -38,22 +38,45 @@ export const ThreeJsApp = () => {
       const boxDepth = 1;
       const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
       //材质
-      const material = new THREE.MeshPhongMaterial({ color: 0x44aa88 });
+      // const material = new THREE.MeshPhongMaterial({ color: 0x44aa88 });
       //网格对象，包含集合体、材质
-      const cube = new THREE.Mesh(geometry, material);
-      scene.add(cube);
+      //多个
+      const cubes = [
+        makeInstance(geometry, 0x44aa88,  0,scene),
+        makeInstance(geometry, 0x8844aa, -2,scene),
+        makeInstance(geometry, 0xaa8844,  2,scene),
+      ]
+      //单个
+      // const cube = new THREE.Mesh(geometry, material);
+      // scene.add(cube);
       /*********************场景和摄像机添加到渲染器********************************/
       //添加动画
       function renderFrame(time){
         time *= 0.001;
-        cube.rotation.x = time;
-        cube.rotation.y = time;
+        //多个
+        cubes.forEach((cube,ndx)=>{
+          const speed = 1 + ndx * .1;
+          const rot = time * speed;
+          cube.rotation.x = rot;
+          cube.rotation.y = rot;
+        })
+        //单个
+        // cube.rotation.x = time;
+        // cube.rotation.y = time;
         renderer.render(scene, camera);
         requestAnimationFrame(renderFrame)
       }
       requestAnimationFrame(renderFrame)
     }
   };
+
+  const makeInstance = (geometry,color,x,scene)=>{
+     const material = new THREE.MeshPhongMaterial({color});
+     const cube = new  THREE.Mesh(geometry,material);
+     scene.add(cube);
+     cube.position.x = x;
+     return cube;
+  }
 
   return (
     <div className="container">
