@@ -16,6 +16,7 @@ export const useInterval = (total) => {
         }, 1000);
     }
 
+    
 
     return {
         number,

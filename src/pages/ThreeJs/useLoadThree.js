@@ -125,3 +125,11 @@ const resizeRendererToDisplaySize = (renderer) => {
     }
     return needResize;
 };
+export const addBoxes = (scene, track) => {
+  const geometry = track(new THREE.BoxGeometry(1, 1, 1));
+  return [
+    makeInstance(geometry, 0x44aa88, 0, scene),
+    makeInstance(geometry, 0x8844aa, -2, scene),
+    makeInstance(geometry, 0xaa8844, 2, scene),
+  ];
+};

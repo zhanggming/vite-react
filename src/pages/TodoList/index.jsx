@@ -13,7 +13,7 @@ import {
   message,
   Popconfirm,
 } from "antd";
-import "./index.css";
+import "./index.module.scss";
 import {
   getTodoList,
   addTodoList,

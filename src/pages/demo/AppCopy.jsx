@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect,useImperativeHandle } from "react";
 import { Button } from "antd";
 import Card from "./Card";
-import "./App.css";
 function App() {
   console.log('parent render')
   const [count, setCount] = useState(0);

@@ -9,8 +9,18 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
-  css:{
-    
+  css: {
+    modules: {
+      localsConvention: 'camelCaseOnly', // 连字符转驼峰，只保留驼峰
+      generateScopedName: '[name]__[local]___[hash:base64:5]',
+      // scopeBehaviour: 'local',
+      // globalModulePaths: [/global\.module\.css$/],
+    },
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/variables.scss" as *;`
+      }
+    }
   },
   server: {
     host: "0.0.0.0",
