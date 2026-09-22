@@ -1,3 +1,341 @@
-.dashboardWrapper{
-
+.dashboardWrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 0;
+  .titleWrapper {
+    display: flex;
+    align-items: center;
+  }
+  .title {
+    color: #e8f4ff;
+    font-size: 14px;
+  }
+  .titleIcon {
+    display: inline-block;
+    background-color: #22d3ee;
+    width: 3px;
+    height: 14px;
+    margin: 0 5px;
+  }
+  .tabButton {
+    width: 62px;
+    height: 24px;
+    line-height: 24px;
+    background-color: #0d1e3c;
+    border: 1px solid #1b3a63;
+    color: #8fafd6;
+    font-size: 12px;
+    transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+    transform-origin: left center;
+  }
+  .tabButton:hover {
+    background-color: #0d1e3c;
+  }
+  .buttonActive {
+    color: #22d3ee;
+    border-color: #22d3ee;
+    background-color: rgba(34, 211, 238, 0.18);
+  }
+  .buttonActive:hover {
+    background-color: rgba(34, 211, 238, 0.18);
+  }
+  .trendContent {
+    width: 934px;
+    height: 322px;
+  }
+  .total-revenue {
+    width: 100%;
+    height: 112px;
+    background-color: #0a1730;
+    border: 1px solid #1b3a63;
+    border-radius: 6px;
+    padding: 10px;
+    box-sizing: border-box;
+    .head {
+      height: 16px;
+      color: #8fafd6;
+      line-height: 16px;
+      display: flex;
+      justify-content: space-between;
+      .walletIcon {
+        vertical-align: middle;
+        width: 12px;
+        height: 12px;
+      }
+      .walletLabel {
+        margin-left: 5px;
+        font-size: 12px;
+      }
+      .statusValue {
+        color: #22e3a5;
+        font-size: 12px;
+        transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+        transform-origin: left center;
+        margin: 0 5px;
+      }
+      .statusLabel {
+        display: inline-block;
+        width: 32px;
+        height: 16px;
+        border-radius: 3px;
+        text-align: center;
+        color: #22d3ee;
+        font-size: 12px;
+        transform: scale(0.8333); /* 12 * 0.8333 ≈ 10px */
+        transform-origin: left center;
+        background-color: rgba(34, 211, 238, 0.12);
+      }
+      .walletValue {
+        font-size: 26px;
+        color: #e8f4ff;
+        margin-left: 5px;
+      }
+      .walletSub {
+        font-size: 12px;
+        transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+        transform-origin: left center;
+        color: #5c7ca8;
+      }
+    }
+    .content {
+      width: 100%;
+      height: 100px;
+    }
+  }
+  .chinaWrapper {
+    width: 900px;
+    height: 456px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #0a1730;
+    display: flex;
+    flex-wrap: wrap;
+    .chinaHead {
+      width: 868px;
+      height: 22px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      .chinaCity {
+        width: 80px;
+        height: 16px;
+        line-height: 16px;
+        color: #8fafd6;
+        font-size: 12px;
+        transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+        transform-origin: left center;
+        margin-left: 10px;
+      }
+      .chinaCity::before {
+        display: inline-block;
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #22d3ee;
+        margin: 0 3px;
+      }
+    }
+    .mapWrapper {
+      width: 520px;
+      height: 364px;
+    }
+    .topWrapper {
+      width: 344px;
+      height: 374px;
+    }
+  }
+  .trendWrapper {
+    width: 966px;
+    height: 456px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #0a1730;
+    .trendHead {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+  }
+}
+.citySalesTopWrapper {
+  width: 900px;
+  height: 352px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #0a1730;
+  .head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    .right-title {
+      color: #5c7ca8;
+      font-size: 12px;
+      transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+      transform-origin: left center;
+    }
+  }
+  .content {
+    .topItem {
+      width: 100%;
+      height: 50px;
+      background-color: #0c1e3a;
+      border-radius: 4px;
+      display: flex;
+      // justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0 10px;
+      margin-bottom: 10px;
+      .serialNumber {
+        width: 24px;
+        height: 24px;
+        color: #22d3ee;
+        text-align: center;
+        background-color: rgba(34, 211, 238, 0.18);
+        font-size: 12px;
+        transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+        transform-origin: left center;
+      }
+      .adressWrapper {
+        color: #e8f4ff;
+        display: flex;
+        flex-wrap: wrap;
+        width: 135px;
+        margin-left: 10px;
+        .adressName {
+          display: inline-block;
+          width: 100%;
+          height: 16px;
+          font-size: 13px;
+          margin-bottom: 5px;
+        }
+        .subAdress {
+          width: 100%;
+          height: 14px;
+          display: inline-block;
+          color: #5c7ca8;
+          font-size: 12px;
+          transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+          transform-origin: left center;
+        }
+      }
+      .salesWrapper {
+        margin-left: auto;
+        color: #e8f4ff;
+        display: flex;
+        flex-wrap: wrap;
+        width: 135px;
+        justify-content: flex-end;
+        .salesValue {
+          display: inline-block;
+          width: 100%;
+          height: 16px;
+          font-size: 13px;
+          margin-bottom: 5px;
+          text-align: right;
+        }
+        .salesRatio {
+          display: inline-block;
+          width: 100%;
+          height: 14px;
+          color: #22e3a5;
+          font-size: 12px;
+          transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+          transform-origin: left center;
+          text-align: right;
+        }
+        .salesRatioDown {
+          color: #ff4d6d;
+        }
+      }
+    }
+  }
+}
+.realTimeAlarm {
+  width: 966px;
+  height: 352px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #0a1730;
+  .head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .content {
+    .topItem {
+      width: 100%;
+      height: 50px;
+      background-color: #0c1e3a;
+      border-radius: 4px;
+      display: flex;
+      // justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0 10px;
+      margin-bottom: 10px;
+      .serialNumber {
+        width: 3px;
+        height: 30px;
+        color: #22d3ee;
+        text-align: center;
+        background-color: #22E3A5;
+        font-size: 12px;
+        transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+        transform-origin: left center;
+      }
+      .bgDanger {
+        background-color: #ff4d6d;
+      }
+      .bgWarning {
+        background-color: #f59e0b;
+      }
+      .adressWrapper {
+        color: #e8f4ff;
+        display: flex;
+        flex-wrap: wrap;
+        min-width: 270px;
+        margin-left: 10px;
+        .adressName {
+          display: inline-block;
+          width: 100%;
+          height: 16px;
+          font-size: 13px;
+          margin-bottom: 5px;
+        }
+        .subAdress {
+          width: 100%;
+          height: 14px;
+          display: inline-block;
+          color: #5c7ca8;
+          font-size: 12px;
+          transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+          transform-origin: left center;
+        }
+      }
+      .salesWrapper {
+        margin-left: auto;
+        color: #22E3A5;
+        width: 68px;
+        height: 22px;
+        line-height: 22px;
+        font-size: 12px;
+        transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+        transform-origin: left center;
+        text-align: center;
+        background-color: rgba(34, 227, 165, 0.14);
+      }
+      .levelDanger {
+        color: #ff4d6d;
+        background-color: rgba(255, 77, 109, 0.14);
+      }
+      .levelWarning {
+        color: #f59e0b;
+        background-color: rgba(245, 158, 11, 0.14);
+      }
+    }
+  }
 }

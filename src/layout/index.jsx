@@ -1,21 +1,43 @@
-import { StrictMode, useState } from "react";
-import { RouterProvider,Outlet, NavLink } from "react-router-dom";
+import { StrictMode, useEffect, useState, useRef } from "react";
+import { RouterProvider, Outlet, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router";
 import clsx from "clsx";
 import style from "./index.module.scss";
 export const LayoutApp = () => {
   console.log("LayoutApp render");
-   const navigate = useNavigate();
+  const messageList = [
+    "最新播报·华东区订单量环比+12.4% ｜ 华东仓设备在线率98.2% ｜ 14:28 已完成全量数据刷新",
+    "最新播报·本月销售额2.86亿元，目标完成率 92.6% ｜ 华东区贡献 34.8% ｜ 14:30 已完成数据刷新",
+    "最新播报·实时访问量 4,286 次/分，转化率 3.68% ｜ 社媒渠道环比 +20.9% ｜ 14:31 已完成数据刷新",
+    "最新播报·累计用户1,286 万，7日留存 46.2% ｜ 25-30 岁人群占比 22.4% ｜ 14:29 已完成数据刷新",
+    "最新播报·设备在线率 96.8%，故障设备 86 台 ｜ 华东机房 A 区温控已恢复 ｜ 14:30 已完成数据刷新",
+  ];
+  const navigate = useNavigate();
   const [active, setActive] = useState(1);
+  const [message, setMessage] = useState(messageList[0]);
+  const intervalStance = useRef(null);
 
+  useEffect(() => {
+    intervalStance.current = setInterval(() => {
+      handleSwitchMessage();
+    }, 2000);
+    return () => {
+      intervalStance.current && clearInterval(intervalStance.current);
+    };
+  }, []);
+
+  const handleSwitchMessage = () => {
+    const index = Math.floor(Math.random() * messageList.length);
+    setMessage(messageList[index]);
+  };
   /**
    * 切换屏幕
-   * @param {*} id 
+   * @param {*} id
    */
-  const handleSwitch = (id,path)=>{
-    setActive(id)
-    navigate(path || '/dashboard');
-  }
+  const handleSwitch = (id, path) => {
+    setActive(id);
+    navigate(path || "/dashboard");
+  };
 
   return (
     <>
@@ -28,11 +50,46 @@ export const LayoutApp = () => {
             </span>
           </div>
           <div className={style.navWrapper}>
-            <div className={clsx(style.navItem, {[style.navActive]: active===1,})} onClick={()=>handleSwitch(1,'/dashboard')}>总览</div>
-            <div className={clsx(style.navItem, {[style.navActive]: active===2,})} onClick={()=>handleSwitch(2,'/sales')}>销售</div>
-            <div className={clsx(style.navItem, {[style.navActive]: active===3,})} onClick={()=>handleSwitch(3,'/traffic')}>流量</div>
-            <div className={clsx(style.navItem, {[style.navActive]: active===4,})} onClick={()=>handleSwitch(4,'/user')}>用户</div>
-            <div className={clsx(style.navItem, {[style.navActive]: active===5,})} onClick={()=>handleSwitch(5,'/equipment')}>设备</div>
+            <div
+              className={clsx(style.navItem, {
+                [style.navActive]: active === 1,
+              })}
+              onClick={() => handleSwitch(1, "/dashboard")}
+            >
+              总览
+            </div>
+            <div
+              className={clsx(style.navItem, {
+                [style.navActive]: active === 2,
+              })}
+              onClick={() => handleSwitch(2, "/sales")}
+            >
+              销售
+            </div>
+            <div
+              className={clsx(style.navItem, {
+                [style.navActive]: active === 3,
+              })}
+              onClick={() => handleSwitch(3, "/traffic")}
+            >
+              流量
+            </div>
+            <div
+              className={clsx(style.navItem, {
+                [style.navActive]: active === 4,
+              })}
+              onClick={() => handleSwitch(4, "/user")}
+            >
+              用户
+            </div>
+            <div
+              className={clsx(style.navItem, {
+                [style.navActive]: active === 5,
+              })}
+              onClick={() => handleSwitch(5, "/equipment")}
+            >
+              设备
+            </div>
           </div>
           <div className={style.statusWrapper}>
             <div className={style.statusContent}>
@@ -44,6 +101,13 @@ export const LayoutApp = () => {
         </div>
         <div className={style.layoutContent}>
           <Outlet />
+        </div>
+        <div className={style.layoutFooter}>
+          <span className={style.systemHealf}>
+            系统运行正常·数据源8/8已连接
+          </span>
+          <span className={style.systemMessage}>{message}</span>
+          <span className={style.systemUpdateTime}>最近更新14:32:08</span>
         </div>
       </div>
     </>
