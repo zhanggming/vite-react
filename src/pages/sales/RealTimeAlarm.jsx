@@ -4,15 +4,15 @@ import { Button, Flex, Progress } from "antd";
 //内部依赖
 import style from "./index.module.scss";
 
-export const CitySalesTop = () => {
+export const RealTimeAlarm = () => {
   return (
-    <div className={style.citySalesTopWrapper}>
+    <div className={style.citySalesTopWrapperTwo}>
       <div className={style.head}>
         <span className={style.titleWrapper}>
           <span className={style.titleIcon}></span>
-          <span className={style.title}>城市营收排行榜 · TOP5</span>
+          <span className={style.title}>TOP门店·销售额排行（万元）</span>
         </span>
-        <span className={style.rightTitle}>每5分钟轮播更新</span>
+        <span className={style.rightTitle}>数据截至14:30·每5分钟更新</span>
       </div>
       <div className={style.content}>
         <div className={style.topItem}>
@@ -23,15 +23,15 @@ export const CitySalesTop = () => {
           </span>
           <Flex style={{ width: 537, marginLeft: 10 }}>
             <Progress
-              percent={16.8}
+              percent={22.4}
               size={[395, 8]}
               strokeColor="#22D3EE"
               showInfo={false}
             />
           </Flex>
           <span className={style.salesWrapper}>
-            <span className={style.salesValue}>¥862.4万</span>
-            <span className={style.salesRatio}>▲18.6%</span>
+            <span className={style.salesValue}>¥1286.4万</span>
+            <span className={style.salesRatio}>▲22.4%</span>
           </span>
         </div>
         <div className={style.topItem}>
@@ -42,15 +42,15 @@ export const CitySalesTop = () => {
           </span>
           <Flex style={{ width: 537, marginLeft: 10 }}>
             <Progress
-              percent={12.4}
+              percent={16.8}
               size={[395, 8]}
               strokeColor="#22D3EE"
               showInfo={false}
             />
           </Flex>
           <span className={style.salesWrapper}>
-            <span className={style.salesValue}>¥748.6万</span>
-            <span className={style.salesRatio}>▲12.4%</span>
+            <span className={style.salesValue}>¥1024.8万</span>
+            <span className={style.salesRatio}>▲16.8%</span>
           </span>
         </div>
         <div className={style.topItem}>
@@ -61,15 +61,15 @@ export const CitySalesTop = () => {
           </span>
           <Flex style={{ width: 537, marginLeft: 10 }}>
             <Progress
-              percent={9.8}
+              percent={11.2}
               size={[395, 8]}
               strokeColor="#22D3EE"
               showInfo={false}
             />
           </Flex>
           <span className={style.salesWrapper}>
-            <span className={style.salesValue}>¥623.2万</span>
-            <span className={style.salesRatio}>▲9.8%</span>
+            <span className={style.salesValue}>¥968.2万</span>
+            <span className={style.salesRatio}>▲11.2%</span>
           </span>
         </div>
         <div className={style.topItem}>
@@ -80,15 +80,15 @@ export const CitySalesTop = () => {
           </span>
           <Flex style={{ width: 537, marginLeft: 10 }}>
             <Progress
-              percent={6.2}
+              percent={8.4}
               size={[395, 8]}
               strokeColor="#22D3EE"
               showInfo={false}
             />
           </Flex>
           <span className={style.salesWrapper}>
-            <span className={style.salesValue}>¥512.8万</span>
-            <span className={style.salesRatio}>▲6.2%</span>
+            <span className={style.salesValue}>¥862.6万</span>
+            <span className={style.salesRatio}>▲8.4%</span>
           </span>
         </div>
         <div className={style.topItem}>
@@ -99,21 +99,19 @@ export const CitySalesTop = () => {
           </span>
           <Flex style={{ width: 537, marginLeft: 10 }}>
             <Progress
-              percent={2.4}
+              percent={4.6}
               size={[395, 8]}
               strokeColor="#22D3EE"
               showInfo={false}
             />
           </Flex>
           <span className={style.salesWrapper}>
-            <span className={style.salesValue}>¥428.4万</span>
-            <span className={clsx(style.salesRatio, style.salesRatioDown)}>
-              ▼2.4%
-            </span>
+            <span className={style.salesValue}>¥748.2万</span>
+            <span className={clsx(style.salesRatio)}>▲4.6%</span>
           </span>
         </div>
       </div>
     </div>
   );
 };
-export default CitySalesTop;
+export default RealTimeAlarm;

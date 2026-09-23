@@ -10,7 +10,7 @@ export const useOption = () => {
         legend: {
             data: [
                 {
-                    name: "访问量",
+                    name: "今年",
                     icon: 'circle',
                     textStyle: {
                         color: "#8FAFD6",
@@ -21,7 +21,7 @@ export const useOption = () => {
                     },
                 },
                 {
-                    name: "订单量",
+                    name: "去年",
                     icon: 'circle',
                     textStyle: {
                         color: "#8FAFD6",
@@ -45,7 +45,7 @@ export const useOption = () => {
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
+            data: ['近1月', '近2月', '近3月'],
             axisLine: {
                 show: false,
             },
@@ -69,11 +69,11 @@ export const useOption = () => {
         },
         series: [
             {
-                name: '订单量',
+                name: '去年',
                 smooth: true,
                 type: 'line',
                 stack: 'Total',
-                data: [1, 2, 1, 1, 9, 2, 2],
+                data: [750, 1500, 1500, 1700, 1800, 2000, 1600, 1300, 1500, 1200, 1100, 1000, 750],
                 areaStyle: {
                     color: "rgba(168, 85, 247, 0.14)",
                 },
@@ -83,11 +83,11 @@ export const useOption = () => {
                 }
             },
             {
-                name: '访问量',
+                name: '今年',
                 smooth: true,
                 type: 'line',
                 stack: 'Total',
-                data: [2, 1, 9, 2, 3, 3, 3],
+                data: [850, 1700, 1700, 2000, 2200, 1700, 1500, 1700, 1500, 1300, 1200, 850],
                 areaStyle: {
                     color: "rgba(34, 211, 238, 0.14)",
                 },
@@ -111,7 +111,7 @@ export const useOption = () => {
                 ...trendOptionDefault,
                 xAxis: {
                     ...trendOptionDefault.xAxis,
-                    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                    data: ['近1月', '近2月', '近3月', '近4月', '近5月', '近6月']
                 }
             })
         }
@@ -120,7 +120,7 @@ export const useOption = () => {
                 ...trendOptionDefault,
                 xAxis: {
                     ...trendOptionDefault.xAxis,
-                    data: ['第一周', '第二周', '第三周', '第四周']
+                    data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
                 }
             })
         }

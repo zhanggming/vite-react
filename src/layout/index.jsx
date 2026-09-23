@@ -1,6 +1,6 @@
 import { StrictMode, useEffect, useState, useRef } from "react";
-import { RouterProvider, Outlet, NavLink } from "react-router-dom";
-import { useNavigate } from "react-router";
+import { RouterProvider, Outlet, NavLink,useLocation } from "react-router-dom";
+import { useNavigate, } from "react-router";
 import clsx from "clsx";
 import style from "./index.module.scss";
 export const LayoutApp = () => {
@@ -13,9 +13,10 @@ export const LayoutApp = () => {
     "最新播报·设备在线率 96.8%，故障设备 86 台 ｜ 华东机房 A 区温控已恢复 ｜ 14:30 已完成数据刷新",
   ];
   const navigate = useNavigate();
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState('/dashboard');
   const [message, setMessage] = useState(messageList[0]);
   const intervalStance = useRef(null);
+  const location = useLocation();
 
   useEffect(() => {
     intervalStance.current = setInterval(() => {
@@ -25,6 +26,11 @@ export const LayoutApp = () => {
       intervalStance.current && clearInterval(intervalStance.current);
     };
   }, []);
+  useEffect(()=>{
+    const pathname = location.pathname
+    console.log(pathname,'pathname')
+    setActive(pathname)
+  },[])
 
   const handleSwitchMessage = () => {
     const index = Math.floor(Math.random() * messageList.length);
@@ -32,10 +38,10 @@ export const LayoutApp = () => {
   };
   /**
    * 切换屏幕
-   * @param {*} id
+   * @param {*} path
    */
-  const handleSwitch = (id, path) => {
-    setActive(id);
+  const handleSwitch = (path) => {
+    setActive(path);
     navigate(path || "/dashboard");
   };
 
@@ -52,39 +58,39 @@ export const LayoutApp = () => {
           <div className={style.navWrapper}>
             <div
               className={clsx(style.navItem, {
-                [style.navActive]: active === 1,
+                [style.navActive]: active === '/dashboard',
               })}
-              onClick={() => handleSwitch(1, "/dashboard")}
+              onClick={() => handleSwitch("/dashboard")}
             >
               总览
             </div>
             <div
               className={clsx(style.navItem, {
-                [style.navActive]: active === 2,
+                [style.navActive]: active === '/sales',
               })}
-              onClick={() => handleSwitch(2, "/sales")}
+              onClick={() => handleSwitch("/sales")}
             >
               销售
             </div>
             <div
               className={clsx(style.navItem, {
-                [style.navActive]: active === 3,
+                [style.navActive]: active === '/traffic',
               })}
-              onClick={() => handleSwitch(3, "/traffic")}
+              onClick={() => handleSwitch("/traffic")}
             >
               流量
             </div>
             <div
               className={clsx(style.navItem, {
-                [style.navActive]: active === 4,
+                [style.navActive]: active === '/user',
               })}
-              onClick={() => handleSwitch(4, "/user")}
+              onClick={() => handleSwitch("/user")}
             >
               用户
             </div>
             <div
               className={clsx(style.navItem, {
-                [style.navActive]: active === 5,
+                [style.navActive]: active === '/equipment',
               })}
               onClick={() => handleSwitch(5, "/equipment")}
             >
