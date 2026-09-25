@@ -1,0 +1,16 @@
+.trendWrapper {
+  width: 966px;
+  height: 456px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #0a1730;
+  .head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .content {
+    width: 934px;
+    height: 322px;
+  }
+}

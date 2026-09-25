@@ -4,8 +4,9 @@ import { Button, Flex, Progress } from "antd";
 import ReactECharts from "echarts-for-react";
 //内部依赖
 import style from "./index.module.scss";
+import CustomTitle from '@/components/CustomTitle/index'
 
-export const RealTimeAlarm = () => {
+export const HeatmapAPP = () => {
   // prettier-ignore
   const hours = ['00:00', '06:00', '12:00', '18:00', '24:00'];
   // prettier-ignore
@@ -93,11 +94,7 @@ export const RealTimeAlarm = () => {
   return (
     <div className={style.contentWrapper}>
       <div className={style.head}>
-        <span className={style.titleWrapper}>
-          <span className={style.titleIcon}></span>
-          <span className={style.title}>时段热力图·星期×小时访问分布</span>
-        </span>
-        <span className={style.subTitle}>单位：千次访问</span>
+        <CustomTitle title='时段热力图·星期×小时访问分布' subTitle='单位：千次访问'/>
       </div>
       <div className={style.content}>
         <div className={style.echartsWrapper}>
@@ -111,4 +108,4 @@ export const RealTimeAlarm = () => {
     </div>
   );
 };
-export default RealTimeAlarm;
+export default HeatmapAPP;

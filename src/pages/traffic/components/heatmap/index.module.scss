@@ -8,19 +8,6 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    .titleIcon {
-      display: inline-block;
-      background-color: #22d3ee;
-      width: 3px;
-      height: 14px;
-      margin: 0 5px;
-    }
-    .sub-title {
-      color: #5c7ca8;
-      font-size: 12px;
-      transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
-      transform-origin: left center;
-    }
   }
   .content {
     display: flex;

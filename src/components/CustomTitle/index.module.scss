@@ -1,0 +1,26 @@
+.customTitle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  .titleWrapper {
+    display: flex;
+    align-items: center;
+  }
+  .title {
+    color: #e8f4ff;
+    font-size: 14px;
+  }
+  .titleIcon {
+    display: inline-block;
+    background-color: #22d3ee;
+    width: 3px;
+    height: 14px;
+    margin: 0 5px;
+  }
+  .subTitle {
+    color: #5c7ca8;
+    font-size: 12px;
+    transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+    transform-origin: left center;
+  }
+}

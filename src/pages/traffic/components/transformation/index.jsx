@@ -6,6 +6,7 @@ import ReactECharts from "echarts-for-react";
 //内部依赖
 import style from "./index.module.scss";
 import useOption from "../../useOption";
+import CustomTitle from "@/components/CustomTitle/index";
 
 const StatisticTitle = (props) => {
   const { title, style } = props;
@@ -18,11 +19,7 @@ export const TransformationApp = () => {
   return (
     <div className={style.contentWrapper}>
       <div className={style.head}>
-        <span className={style.titleWrapper}>
-          <span className={style.titleIcon}></span>
-          <span className={style.title}>转化漏斗·访问到支付</span>
-        </span>
-        <span className={style.subTitle}>整体转化率3.68%</span>
+        <CustomTitle title="转化漏斗·访问到支付" subTitle="整体转化率3.68%" />
       </div>
       <div className={style.content}>
         <div className={style.echartsWrapper}>
