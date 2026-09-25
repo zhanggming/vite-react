@@ -160,7 +160,7 @@ function DashboardApp() {
                   <span className={style.walletLabel}>同比增长</span>
                 </div>
                 <div
-                  className={clsx(style.walletValue, style.statisticsContent)}
+                  className={clsx(style.walletValue, style.statisticsContent,style.successLabel)}
                 >
                   +21.4%
                   <sub className={style.walletSub}></sub>
@@ -173,7 +173,7 @@ function DashboardApp() {
                   <span className={style.walletLabel}>目标完成</span>
                 </div>
                 <div
-                  className={clsx(style.walletValue, style.statisticsContent)}
+                  className={clsx(style.walletValue, style.statisticsContent,style.warningLabel)}
                 >
                   92.6%
                   <sub className={style.walletSub}></sub>

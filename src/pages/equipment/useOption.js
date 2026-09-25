@@ -10,7 +10,7 @@ export const useOption = () => {
         legend: {
             data: [
                 {
-                    name: "今年",
+                    name: "故障数",
                     icon: 'circle',
                     textStyle: {
                         color: "#8FAFD6",
@@ -21,7 +21,7 @@ export const useOption = () => {
                     },
                 },
                 {
-                    name: "去年",
+                    name: "告警数",
                     icon: 'circle',
                     textStyle: {
                         color: "#8FAFD6",
@@ -32,20 +32,20 @@ export const useOption = () => {
                     },
                 },
             ],
-            top: '10%',
-            right: '5%'
+            top: '2%',
+            right: '2%'
         },
         grid: {
             left: '3%',
             right: '4%',
             bottom: '3%',
-            top: '3%',
+            top: '10%',
             containLabel: true
         },
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['近1月', '近2月', '近3月'],
+            data: ['6-01', '6-02', '6-03', '6-04', '6-05', '6-06', '6-07'],
             axisLine: {
                 show: false,
             },
@@ -64,16 +64,16 @@ export const useOption = () => {
             axisLabel: {
                 color: "#5C7CA8",
                 fontSize: 11,
-                formatter: '{value}k'
+                formatter: '{value}'
             },
         },
         series: [
             {
-                name: '去年',
+                name: '告警数',
                 smooth: true,
                 type: 'line',
                 stack: 'Total',
-                data: [750, 1500, 1500, 1700, 1800, 2000, 1600, 1300, 1500, 1200, 1100, 1000, 750],
+                data: [750, 1500, 1500, 1700, 1800, 2000, 1600, 1300, 1500, 1200, 1100, 1000, 750, 750, 1500, 1500, 1700, 1800, 2000, 1600, 1300, 1500, 1200, 1100, 1000, 750, 750, 1500, 1500, 1700, 1800, 2000, 1600, 1300, 1500, 1200, 1100, 1000, 750,],
                 areaStyle: {
                     color: "rgba(168, 85, 247, 0.14)",
                 },
@@ -83,11 +83,11 @@ export const useOption = () => {
                 }
             },
             {
-                name: '今年',
+                name: '故障数',
                 smooth: true,
                 type: 'line',
                 stack: 'Total',
-                data: [850, 1700, 1700, 2000, 2200, 1700, 1500, 1700, 1500, 1300, 1200, 850],
+                data: [850, 1700, 1700, 2000, 2200, 1700, 1500, 1700, 1500, 1300, 1200, 850, 850, 1700, 1700, 2000, 2200, 1700, 1500, 1700, 1500, 1300, 1200, 850, 850, 1700, 1700, 2000, 2200, 1700, 1500, 1700, 1500, 1300, 1200, 850],
                 areaStyle: {
                     color: "rgba(34, 211, 238, 0.14)",
                 },
@@ -107,11 +107,15 @@ export const useOption = () => {
             })
         }
         if (type === 2) {
+            const data = [];
+            for (let i = 0; i < 30; i++) {
+                data.push('06-' + (i + 1))
+            }
             setTrendOption({
                 ...trendOptionDefault,
                 xAxis: {
                     ...trendOptionDefault.xAxis,
-                    data: ['近1月', '近2月', '近3月', '近4月', '近5月', '近6月']
+                    data: data
                 }
             })
         }
@@ -120,7 +124,7 @@ export const useOption = () => {
                 ...trendOptionDefault,
                 xAxis: {
                     ...trendOptionDefault.xAxis,
-                    data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                    data: ['4月', '5月', '6月']
                 }
             })
         }

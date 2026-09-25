@@ -32,14 +32,14 @@ export const useOption = () => {
                     },
                 },
             ],
-            top: '10%',
-            right: '5%'
+            top: '2%',
+            right: '2%'
         },
         grid: {
             left: '3%',
             right: '4%',
             bottom: '3%',
-            top: '3%',
+            top: '10%',
             containLabel: true
         },
         xAxis: {

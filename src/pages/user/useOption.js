@@ -10,7 +10,7 @@ export const useOption = () => {
         legend: {
             data: [
                 {
-                    name: "今年",
+                    name: "累计用户",
                     icon: 'circle',
                     textStyle: {
                         color: "#8FAFD6",
@@ -21,7 +21,7 @@ export const useOption = () => {
                     },
                 },
                 {
-                    name: "去年",
+                    name: "新增用户",
                     icon: 'circle',
                     textStyle: {
                         color: "#8FAFD6",
@@ -32,14 +32,14 @@ export const useOption = () => {
                     },
                 },
             ],
-            top: '10%',
-            right: '5%'
+            top: '2%',
+            right: '2%'
         },
         grid: {
             left: '3%',
             right: '4%',
             bottom: '3%',
-            top: '3%',
+            top: '10%',
             containLabel: true
         },
         xAxis: {
@@ -69,7 +69,7 @@ export const useOption = () => {
         },
         series: [
             {
-                name: '去年',
+                name: '新增用户',
                 smooth: true,
                 type: 'line',
                 stack: 'Total',
@@ -83,7 +83,7 @@ export const useOption = () => {
                 }
             },
             {
-                name: '今年',
+                name: '累计用户',
                 smooth: true,
                 type: 'line',
                 stack: 'Total',
@@ -125,10 +125,95 @@ export const useOption = () => {
             })
         }
     }
+    const ageAndGenderoption = {
+        tooltip: {
+            trigger: 'axis',
+        },
+        grid:{
+            left:'5%',
+            right:'5%',
+            bottom:'5%',
+            top:'10%',
+        },
+        legend: {
+            right:'2%',
+            top:'2%',
+            data: [
+                {
+                    name: "男性",
+                    icon: 'rect',
+                    textStyle: {
+                        color: "#8FAFD6",
+                        fontSize: 11,
+                    },
+                    itemStyle: {
+                        color: "#22D3EE"
+                    },
+                },
+                {
+                    name: "女性",
+                    icon: 'rect',
+                    textStyle: {
+                        color: "#8FAFD6",
+                        fontSize: 11,
+                    },
+                    itemStyle: {
+                        color: "#A855F7"
+                    },
+                },
+            ],
+        },
+        xAxis: {
+            type: 'category',
+            data: ['18-24', '25-30', '31-35', '36-40', '41-45', '50+'],
+            axisLine: {
+                show: false,
+            },
+            axisLabel: {
+                color: "#5C7CA8",
+                fontSize: 11,
+            },
+        },
+        yAxis: {
+            type: 'value',
+            name: '',
+            min: 0,
+            // max: 250,
+            // interval: 50,
+            splitLine: {
+                show:false,
+            },
+            axisLabel: {
+                color: "#5C7CA8",
+                fontSize: 11,
+            },
+        },
+        series: [
+            {
+                name: '男性',
+                type: 'bar',
+                data: [80, 70, 60, 50, 30, 20],
+                itemStyle: {
+                    color: "#22D3EE"
+                },
+                barWidth:9,
+            },
+            {
+                name: '女性',
+                type: 'bar',
+                data: [60, 70, 50, 40, 20, 30],
+                itemStyle: {
+                    color: "#A855F7"
+                },
+                barWidth:9,
+            },
+        ]
+    };
 
     return {
         trendOption,
         handleSwitchTrend,
+        ageAndGenderoption,
     }
 }
 export default useOption

@@ -1,0 +1,25 @@
+.contentWrapper {
+  width: 900px;
+  height: 352px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #0a1730;
+  .head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .echartsWrapper {
+      width: 200px;
+      height: 200px;
+    }
+    .ratioWrapper {
+      width: 637px;
+      height: 240px;
+    }
+  }
+}

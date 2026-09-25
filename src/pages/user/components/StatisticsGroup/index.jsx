@@ -17,11 +17,11 @@ export const StatisticsGroup = () => {
         <div className={style.statisticsWrapper}>
           <div className={style.statisticsHead}>
             <img src={walletIcon} className={style.walletIcon} />
-            <span className={style.walletLabel}>本月销售额</span>
+            <span className={style.walletLabel}>累计用户</span>
           </div>
           <div className={clsx(style.walletValue, style.statisticsContent)}>
-            2.866
-            <sub className={style.walletSub}>亿元</sub>
+            1286
+            <sub className={style.walletSub}>万人</sub>
           </div>
         </div>
         <div
@@ -31,11 +31,11 @@ export const StatisticsGroup = () => {
           )}
         >
           <div className={clsx(style.statisticsHead)}>
-            <span className={clsx(style.statusLabel)}>实时</span>
+            <span className={clsx(style.statusLabel)}>累计</span>
           </div>
           <div className={clsx(style.statisticsContent)}>
             <img src={trendingUpIcon} className={style.walletIcon} />
-            <span className={style.statusValue}>+12.4%</span>
+            <span className={style.statusValue}>+4.8%</span>
           </div>
         </div>
       </div>
@@ -43,11 +43,11 @@ export const StatisticsGroup = () => {
         <div className={style.statisticsWrapper}>
           <div className={style.statisticsHead}>
             <img src={creditCardIcon} className={style.walletIcon} />
-            <span className={style.walletLabel}>客户客单价</span>
+            <span className={style.walletLabel}>今日新增</span>
           </div>
           <div className={clsx(style.walletValue, style.statisticsContent)}>
-            428.6
-            <sub className={style.walletSub}>元</sub>
+            42860
+            <sub className={style.walletSub}>人</sub>
           </div>
         </div>
         <div
@@ -58,12 +58,12 @@ export const StatisticsGroup = () => {
         >
           <div className={clsx(style.statisticsHead)}>
             <span className={clsx(style.statusLabel, style.levelInfo)}>
-              稳定
+              实时
             </span>
           </div>
           <div className={clsx(style.statisticsContent)}>
             <img src={trendingUpIcon} className={style.walletIcon} />
-            <span className={style.statusValue}>+3.4%</span>
+            <span className={style.statusValue}>+12.6%</span>
           </div>
         </div>
       </div>
@@ -71,11 +71,11 @@ export const StatisticsGroup = () => {
         <div className={style.statisticsWrapper}>
           <div className={style.statisticsHead}>
             <img src={shoppingCartIcon} className={style.walletIcon} />
-            <span className={style.walletLabel}>订单总量</span>
+            <span className={style.walletLabel}>日活跃DAU</span>
           </div>
           <div className={clsx(style.walletValue, style.statisticsContent)}>
-            66842
-            <sub className={style.walletSub}>单</sub>
+            386420
+            <sub className={style.walletSub}>人</sub>
           </div>
         </div>
         <div
@@ -89,7 +89,7 @@ export const StatisticsGroup = () => {
           </div>
           <div className={clsx(style.statisticsContent)}>
             <img src={trendingUpIcon} className={style.walletIcon} />
-            <span className={style.statusValue}>+9.1%</span>
+            <span className={style.statusValue}>+3.2%</span>
           </div>
         </div>
       </div>
@@ -97,11 +97,11 @@ export const StatisticsGroup = () => {
         <div className={style.statisticsWrapper}>
           <div className={style.statisticsHead}>
             <img src={rotateCcwIcon} className={style.walletIcon} />
-            <span className={style.walletLabel}>退货率</span>
+            <span className={style.walletLabel}>用户平均年龄</span>
           </div>
           <div className={clsx(style.walletValue, style.statisticsContent)}>
-            1.82
-            <sub className={style.walletSub}>%</sub>
+            28.6
+            <sub className={style.walletSub}>岁</sub>
           </div>
         </div>
         <div
@@ -112,12 +112,12 @@ export const StatisticsGroup = () => {
         >
           <div className={clsx(style.statisticsHead)}>
             <span className={clsx(style.statusLabel, style.levelSuccess)}>
-              优化
+              平稳
             </span>
           </div>
           <div className={clsx(style.statisticsContent)}>
             <img src={trendingDown} className={style.walletIcon} />
-            <span className={style.statusValue}>-0.3%</span>
+            <span className={style.statusValue}>-持平</span>
           </div>
         </div>
       </div>
@@ -125,7 +125,7 @@ export const StatisticsGroup = () => {
         <div className={style.statisticsWrapper}>
           <div className={style.statisticsHead}>
             <img src={targetIocn} className={style.walletIcon} />
-            <span className={style.walletLabel}>目标完成率</span>
+            <span className={style.walletLabel}>7日留存率</span>
           </div>
           <div
             className={clsx(
@@ -134,7 +134,7 @@ export const StatisticsGroup = () => {
               style.warningLabel,
             )}
           >
-            92.6
+            46.2
             <sub className={style.walletSub}>%</sub>
           </div>
         </div>
@@ -151,7 +151,7 @@ export const StatisticsGroup = () => {
           </div>
           <div className={clsx(style.statisticsContent)}>
             <img src={trendingUpIcon} className={style.walletIcon} />
-            <span className={style.statusValue}>+5.2%</span>
+            <span className={style.statusValue}>+1.4%</span>
           </div>
         </div>
       </div>

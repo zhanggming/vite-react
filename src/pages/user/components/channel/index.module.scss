@@ -1,0 +1,136 @@
+.trendWrapper {
+  width: 966px;
+  height: 456px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #0a1730;
+  .tabButton {
+    width: 62px;
+    height: 24px;
+    line-height: 24px;
+    background-color: #0d1e3c;
+    border: 1px solid #1b3a63;
+    color: #8fafd6;
+    font-size: 12px;
+    transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+    transform-origin: left center;
+  }
+  .tabButton:hover {
+    background-color: #0d1e3c;
+  }
+  .buttonActive {
+    color: #22d3ee;
+    border-color: #22d3ee;
+    background-color: rgba(34, 211, 238, 0.18);
+  }
+  .buttonActive:hover {
+    background-color: rgba(34, 211, 238, 0.18);
+  }
+  .head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .content {
+    width: 934px;
+    height: 322px;
+    .trendStatistics {
+      display: flex;
+      justify-content: space-between;
+      .statisticsCard {
+        width: 303px;
+        height: 56px;
+        padding: 10px;
+        box-sizing: border-box;
+        color: #8fafd6;
+        background-color: #0d1e3c;
+        // border: 1px solid #1b3a63;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // line-height: 16px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        .statisticsWrapper {
+          width: 150px;
+          .statisticsHead {
+          }
+          .statisticsContent {
+            width: 100%;
+          }
+        }
+        .statisticsWrapperRight {
+          width: 80px;
+          .statisticsHead,
+          .statisticsContent {
+            text-align: right;
+          }
+        }
+        .walletIcon {
+          vertical-align: middle;
+          width: 12px;
+          height: 12px;
+        }
+        .walletLabel {
+          margin-left: 5px;
+          font-size: 12px;
+        }
+        .statusValue {
+          color: #22e3a5;
+          font-size: 12px;
+          transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+          transform-origin: left center;
+          margin: 0 5px;
+        }
+        .statusLabel {
+          display: inline-block;
+          width: 44px;
+          height: 18px;
+          border-radius: 3px;
+          text-align: center;
+          color: #22d3ee;
+          font-size: 12px;
+          transform: scale(0.8333); /* 12 * 0.8333 ≈ 10px */
+          transform-origin: left center;
+          background-color: rgba(34, 211, 238, 0.12);
+        }
+        .walletValue {
+          font-size: 18px;
+          color: #22d3ee;
+          margin-left: 5px;
+        }
+        .warningLabel {
+          color: #f59e0b;
+        }
+        .successLabel {
+          color: #22e3a5;
+        }
+        .infoLabel {
+          color: #3b82f6;
+        }
+        .levelDanger {
+          color: #ff4d6d;
+          background-color: rgba(255, 77, 109, 0.14);
+        }
+        .levelWarning {
+          color: #f59e0b;
+          background-color: rgba(245, 158, 11, 0.14);
+        }
+        .levelSuccess {
+          color: #22e3a5;
+          background-color: rgba(34, 227, 165, 0.12);
+        }
+        .levelInfo {
+          color: #3b82f6;
+          background-color: rgba(59, 130, 246, 0.12);
+        }
+        .walletSub {
+          font-size: 12px;
+          transform: scale(0.917); /* 12 * 0.917 ≈ 11px */
+          transform-origin: left center;
+          color: #5c7ca8;
+        }
+      }
+    }
+  }
+}
