@@ -92,7 +92,7 @@ export const LayoutApp = () => {
               className={clsx(style.navItem, {
                 [style.navActive]: active === '/equipment',
               })}
-              onClick={() => handleSwitch(5, "/equipment")}
+              onClick={() => handleSwitch("/equipment")}
             >
               设备
             </div>
