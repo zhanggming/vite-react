@@ -42,7 +42,7 @@ export const LayoutApp = () => {
    */
   const handleSwitch = (path) => {
     setActive(path);
-    navigate(path || "/dashboard");
+    navigate(path || "/");
   };
 
   return (
@@ -58,9 +58,9 @@ export const LayoutApp = () => {
           <div className={style.navWrapper}>
             <div
               className={clsx(style.navItem, {
-                [style.navActive]: active === '/dashboard',
+                [style.navActive]: active === '/',
               })}
-              onClick={() => handleSwitch("/dashboard")}
+              onClick={() => handleSwitch("/")}
             >
               总览
             </div>

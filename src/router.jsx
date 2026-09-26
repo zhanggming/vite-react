@@ -8,7 +8,7 @@ const router = createBrowserRouter([
     element: <LayoutApp />,
     children: [{
       index:true,
-      path: 'dashboard',
+      // path: 'dashboard',
       lazy: async () => {
         const { default: Component } = await import('@/pages/dashboard/index');
         return { Component };
